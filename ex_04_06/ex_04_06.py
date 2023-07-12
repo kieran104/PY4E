@@ -1,17 +1,14 @@
-try:
-    userHours = float(input('Enter hours worked: '))
-    userRate = float(input('Enter your rate: '))
-except:
-    print('Error, please enter a number')
-    quit()
-   
-overtimeRate = userRate * 0.5
-overtimeHours = 0
-overtimePay = 0
+def computepay(hours, rate):
+    if hours > 40:
+        regularPay = rate * hours
+        overtimePay = (hours - 40) * (rate * 0.5)
+        totalPay = regularPay + overtimePay
+    else:
+        totalPay = hours * rate
+    return totalPay
 
-if userHours > 40:
-    overtimeHours = userHours - 40
-    overtimePay = overtimeRate * overtimeHours
+userHours = float(input('Enter hours worked: '))
+userRate = float(input('Enter your rate: '))
+XP = computepay(userHours, userRate)
 
-
-print('Pay: ', (userHours * userRate) + (overtimePay))
+print('Pay:', XP)
